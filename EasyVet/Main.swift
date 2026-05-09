@@ -15,15 +15,15 @@ struct Main: View {
             }
             
             Tab("Favorites", systemImage: "heart") {
-                Home()
+                Favorites()
             }
             
             Tab("Cart", systemImage: "cart") {
-                Home()
+                Cart()
             }
             
             Tab("Profile", systemImage: "person") {
-                Home()
+                Profile()
             }
         }
         .tint(.green)

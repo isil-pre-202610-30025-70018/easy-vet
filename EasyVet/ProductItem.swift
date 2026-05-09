@@ -13,6 +13,8 @@ struct ProductItem: View {
     
     var product: Product
     
+    @EnvironmentObject var viewModel: CartViewModel
+    
     var body: some View {
         VStack {
             
@@ -31,9 +33,10 @@ struct ProductItem: View {
                     
                 case .failure:
                     EmptyView()
-                    
+                        .frame(height: 256)
                 @unknown default:
                     EmptyView()
+                        .frame(height: 256)
                 }
             }
             
@@ -46,6 +49,7 @@ struct ProductItem: View {
         .sheet(isPresented: $showDetail) {
             ProductDetail(product: product) {
                 showDetail.toggle()
+                viewModel.addProduct(product: product)
             }
             .presentationDetents([.fraction(0.35)])
             .presentationBackground(.white)

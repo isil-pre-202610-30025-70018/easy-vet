@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct EasyVetApp: App {
+    @StateObject var viewModel = CartViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OnBoarding()
+                .environmentObject(viewModel)
         }
     }
 }

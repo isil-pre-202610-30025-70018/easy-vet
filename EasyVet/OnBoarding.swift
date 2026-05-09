@@ -43,4 +43,5 @@ struct OnBoarding: View {
 
 #Preview {
     OnBoarding()
+        .environmentObject(CartViewModel())
 }
