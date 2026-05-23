@@ -11,10 +11,13 @@ import SwiftUI
 struct EasyVetApp: App {
     @StateObject var viewModel = CartViewModel()
     
+    @StateObject var homeViewModel = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             OnBoarding()
                 .environmentObject(viewModel)
+                .environmentObject(homeViewModel)
         }
     }
 }

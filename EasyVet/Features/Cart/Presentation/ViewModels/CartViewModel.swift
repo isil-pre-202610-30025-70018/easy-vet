@@ -10,6 +10,9 @@ import Combine
 class CartViewModel: ObservableObject {
     @Published private(set) var products = [Product]()
     
+    var total: Double {
+        products.reduce(0) { $0 + $1.price }
+    }
     
     func addProduct(product: Product) {
         products.append(product)

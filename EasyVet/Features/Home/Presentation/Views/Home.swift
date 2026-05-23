@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Home: View {
 
-    @StateObject var viewModel = HomeViewModel()
+    @EnvironmentObject var viewModel: HomeViewModel
     
     var body: some View {
         List {
@@ -26,4 +26,5 @@ struct Home: View {
 
 #Preview {
     Home()
+        .environmentObject(HomeViewModel())
 }

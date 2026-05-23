@@ -44,7 +44,8 @@ class ProductService {
             do {
                 let response = try JSONDecoder().decode(ProductsResponseDto.self, from: data)
                 let products = response.products.map { dto in
-                    Product(id: dto.id, name: dto.title, price: dto.price, image: dto.image)
+                    Product(id: dto.id, name: dto.title, price: dto.price, image: dto.image,
+                    isFavorite: false)
                 }
                 completion(products)
                 

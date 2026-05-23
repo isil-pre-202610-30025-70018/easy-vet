@@ -10,4 +10,5 @@ struct Product: Identifiable {
     let name: String
     let price: Double
     let image: String
+    let isFavorite: Bool
 }

@@ -12,6 +12,11 @@ class HomeViewModel: ObservableObject {
     
     @Published var products: [Product] = []
     
+    
+    var favoriteProducts : [Product] {
+        products.filter({$0.isFavorite})
+    }
+    
     let service = ProductService.shared
 
     func getProducts() {
@@ -21,6 +26,18 @@ class HomeViewModel: ObservableObject {
             }
         }
     }
+    
+    func togglefavorite(id: Int) {
+        products = products.map { product in
+            if product.id == id {
+                Product(id: product.id, name: product.name, price: product.price, image: product.image, isFavorite: !product.isFavorite)
+            } else {
+                product
+            }
+        }
+    }
+    
+  
     
     init() {
         getProducts()

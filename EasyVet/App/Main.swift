@@ -33,4 +33,6 @@ struct Main: View {
 
 #Preview {
     Main()
+        .environmentObject(CartViewModel())
+        .environmentObject(HomeViewModel())
 }

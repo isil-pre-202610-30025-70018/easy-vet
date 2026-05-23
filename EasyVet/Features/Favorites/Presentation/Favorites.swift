@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct Favorites: View {
+    
+    @EnvironmentObject var viewModel: HomeViewModel
     var body: some View {
-        Text("Favorites")
+        List {
+            ForEach(viewModel.favoriteProducts) { product in
+                Text(product.name)
+            }
+        }
     }
 }
+
+
