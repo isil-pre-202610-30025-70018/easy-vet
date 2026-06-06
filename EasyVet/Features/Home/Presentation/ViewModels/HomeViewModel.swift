@@ -11,6 +11,7 @@ import Foundation
 class HomeViewModel: ObservableObject {
     
     @Published var products: [Product] = []
+    private let repository = ProductRepository()
     
     
     var favoriteProducts : [Product] {
@@ -20,7 +21,11 @@ class HomeViewModel: ObservableObject {
     let service = ProductService.shared
 
     func getProducts() {
-        service.getProducts() {products in
+        self.products = repository.getAllProducts()
+    }
+    
+    func syncProducts() {
+        repository.syncProducts { products in
             DispatchQueue.main.async {
                 self.products = products
             }
@@ -41,5 +46,6 @@ class HomeViewModel: ObservableObject {
     
     init() {
         getProducts()
+        syncProducts()
     }
 }
